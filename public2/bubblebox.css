@@ -1,0 +1,48 @@
+.leftbubblebox {
+	position: relative;
+	min-height: 42px;
+	margin: 0 20px 0 20px;
+	padding: 10px 15px 5px 15px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 15px;
+	border-top: 1px solid #fff;
+	background-color: #A6DADC;
+	word-wrap: break-word;
+}
+.rightbubblebox {
+	position: relative;
+	min-height: 42px;
+	margin: 0 20px 0 20px;
+	padding: 10px 15px 5px 15px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 15px;
+	border-top: 1px solid #fff;
+	background-color: #33FF33;
+	word-wrap: break-word;
+}
+.left:before{
+	content: "\00a0";
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: -20px;
+	width: 0;
+	height: 0;
+	border-width: 10px 20px 10px 0;
+	border-style: solid;
+	border-color: transparent #A6DADC transparent transparent;
+}
+.right:before {
+	content: "\00a0";
+	display: block;
+	position: absolute;
+	top: 10px;
+	right:-20px;
+	width: 0;
+	height: 0;
+	border-width: 10px 0 10px 20px;
+	border-style: solid;
+	border-color: transparent transparent transparent  #33FF33;
+}
