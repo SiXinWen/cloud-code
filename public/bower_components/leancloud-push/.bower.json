@@ -1,0 +1,33 @@
+{
+  "name": "leancloud-push.js",
+  "version": "2.0.2",
+  "homepage": "http://github.com/leancloud/js-push-sdk/",
+  "authors": [
+    "WangXiao <xwang@leancloud.rocks>"
+  ],
+  "description": "LeanCloud JavaScript Push SDK",
+  "main": "src/AV.push.js",
+  "ignore": [
+    "demo",
+    "README.md"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "LeanCloud",
+    "Push"
+  ],
+  "license": "MIT",
+  "_release": "2.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.2",
+    "commit": "5de4a350cc1189a385dd6d4ea30616e4728f18b4"
+  },
+  "_source": "git://github.com/leancloud/js-push-sdk.git",
+  "_target": "~2.0.2",
+  "_originalSource": "leancloud-push",
+  "_direct": true
+}
