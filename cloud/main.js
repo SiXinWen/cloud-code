@@ -5,6 +5,19 @@ AV.Cloud.define("hello", function(request, response) {
   response.success("Hello Sixinwen!");
 });
 
+/* param example:
+{ fromPeer: 'SiXinWenUser',
+  receipt: false,
+  groupId: null,
+  content: { text: 'ok', atitudeVal: false },
+  convId: '5535e6dde4b078a907134b9f',
+  toPeers: [ 'walker', 'gyz' ],
+  bin: false,
+  transient: false,
+  sourceIP: '162.105.80.162',
+  timestamp: 1430029280028 }
+
+*/
 AV.Cloud.define("_messageReceived", function(request, response){
 	var convId = request.params.convId;
 	var fromPeer = request.params.fromPeer;
@@ -13,16 +26,16 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var query = new AV.Query("_Conversation");
 	query.get(convId, {
 	      success: function(conversation) {
-	          var x = 2;
+	          var x = 0;
 	          if(x == 0){
-	             console.log("send");
+	             console.log("_messageReceived send");
 	             response.success();
 	          } else if(x == 1) {
 	          	
-	             console.log("drop");
+	             console.log("_messageReceived drop");
 	             response.success({"drop":"truthy"}); 
-	          }else if(x=2){
-	          	console.log("select");
+	          }else if(x == 2){
+	          	console.log("_messageReceived select");
 	          	response.success({"toPeers": [ 'walker' ]});
 	          }
 	      },
