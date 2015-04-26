@@ -66,13 +66,9 @@ function main() {
                 });
             });
             convOld.receive(function(data) {
+                console.log('qychen receive')
                 console.log(data);
-                var text = '';
-                if (data.msg.text) {
-                    text = data.msg.text;
-                } else {
-                    text = JSON.stringify(data.msg);
-                }
+                var text = data.msg.text;
                 showLog(text, data.msg.atitudeVal);
                 goBottom();
             });
@@ -229,6 +225,8 @@ function main() {
     // 监听所有 Conversation 中发送的消息
     rt.on('message', function(data) {
         console.log('某个当前用户在的 Conversation 接收到消息：', data);
+        showLog(data.msg.text, data.msg.attr.atitudeVal);
+        goBottom();
     });
 
     // 监听短信回执事件
