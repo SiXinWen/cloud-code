@@ -9,7 +9,7 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var convId = request.params.convId;
 	var fromPeer = request.params.fromPeer;
 	var content = request.params.content;
-
+	console.log(request.params);
 	var query = new AV.Query("_Conversation");
 	query.get(convId, {
 	      success: function(conversation) {
