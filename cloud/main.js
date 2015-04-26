@@ -15,8 +15,11 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	      success: function(conversation) {
 	          var x = 1;
 	          if(x == 0){
+	             console.log("send");
 	             response.success();
 	          } else {
+	          	
+	             console.log("drop");
 	             response.success({"drop":"truthy"}); 
 	          }
 	      },
