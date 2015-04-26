@@ -13,7 +13,7 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var query = new AV.Query("_Conversation");
 	query.get(convId, {
 	      success: function(conversation) {
-	          var x = 1;
+	          var x = 0;
 	          if(x == 0){
 	             console.log("send");
 	             response.success();
