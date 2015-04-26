@@ -13,14 +13,17 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var query = new AV.Query("_Conversation");
 	query.get(convId, {
 	      success: function(conversation) {
-	          var x = 0;
+	          var x = 2;
 	          if(x == 0){
 	             console.log("send");
 	             response.success();
-	          } else {
+	          } else if(x == 1) {
 	          	
 	             console.log("drop");
 	             response.success({"drop":"truthy"}); 
+	          }else if(x=2){
+	          	console.log("select");
+	          	response.success({"toPeers": [ 'walker' ]});
 	          }
 	      },
 	      error: function(object, error) {
