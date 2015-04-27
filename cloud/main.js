@@ -49,8 +49,8 @@ AV.Cloud.define("hello", function(request, response) {
 AV.Cloud.define("distributeMsg", function(request, response){
 	content = request.params.content;
 	AV.Push.send({
-		channels:["protected"],
-		push_time:request.params.timestamp,
+	//	channels:["protected"],
+	//	push_time:request.params.timestamp,
 		data:{
 			alert: content
 		}
