@@ -8,6 +8,15 @@ push.open(function() {
     console.log('连接服务器成功，可以接收推送');
 });
 
+push.subscribe(['public'], function() {
+    console.log('订阅成功！');
+});
+
+ push.receive(function(data) {
+        showLog('Receive 方法显示和监听 message 事件一致');
+        showLog(JSON.stringify(data));
+    });
+    
 // 监听推送消息
 push.on('message', function(data) {
     console.log('message');
