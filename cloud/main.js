@@ -52,7 +52,7 @@ AV.Cloud.define("distributeMsg", function(request, response){
 		channels:["protected"],
 		push_time:request.params.timestamp,
 		data:{
-			alert: content;
+			alert: content
 		}
 	});
 	response.success("");
