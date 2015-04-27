@@ -35,8 +35,10 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	             console.log("_messageReceived drop");
 	             response.success({"drop":"truthy"}); 
 	          }else if(x == 2){
+	          	topeers = conversation.get("m");
 	          	console.log("_messageReceived select");
-	          	response.success({"toPeers": conversation.get("m")});
+	          	console.log(topeers);
+	          	response.success({"toPeers": topeers});
 	          }
 	      },
 	      error: function(object, error) {
