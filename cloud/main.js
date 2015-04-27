@@ -47,7 +47,15 @@ AV.Cloud.define("hello", function(request, response) {
 }
 */
 AV.Cloud.define("distributeMsg", function(request, response){
-	switch(response)
+	content = request.params.content;
+	AV.Push.send({
+		channels:["protected"],
+		push_time:request.params.timestamp,
+		data:{
+			alert: content;
+		}
+	});
+	response.success("");
 });
 /* param example:
 { 
@@ -81,14 +89,18 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	             console.log("_messageReceived drop");
 	             response.success({"drop":"truthy"}); 
 	          }else if(x == 2){
-	          	allPeers = conversation.get("m");
-	          	if (allPeers.length > 0)
-	          		toPeers = [allPeers[0]];
-	          	else
-	          		toPeers = [];
-	          	console.log("_messageReceived select");
-	          	console.log(toPeers);
-	          	response.success({"toPeers": toPeers});
+	          	AV.Cloud.run("distributeMsg", {
+		          		timestamp:request.params.timestamp,
+		          		content:request.params.content
+		        }, {
+		          	success: function(result) {
+	   					console.log("distributeMsg success");
+					},
+					error: function(error) {
+						console.log("distributeMsg fail");
+					}
+				});
+	          	response.success({"drop":"truthy"}); 
 	          }
 	      },
 	      error: function(object, error) {

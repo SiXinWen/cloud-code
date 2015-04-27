@@ -3,18 +3,6 @@ var push = AV.push({
     appKey: appKey
 });
 
-// 发送一条推送，如果不传 channels 则是给所有 channel 发送消息
-push.send({
-    // channels: ['aaa'],
-    data: {LeanCloud: 123}
-}, function(result) {
-    if (result) {
-        console.log('推送成功发送');
-    } else {
-        console.log('error');
-    }
-});
-
 // 如果想接收推送，需要调用 open 方法，开启和服务器的连接
 push.open(function() {
     console.log('连接服务器成功，可以接收推送');
