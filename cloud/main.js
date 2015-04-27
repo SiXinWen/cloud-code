@@ -5,17 +5,35 @@ AV.Cloud.define("hello", function(request, response) {
   response.success("Hello Sixinwen!");
 });
 
+/* each def is ok.
+1. function distributeMsg(arg){};
+2. bellow
+*/
+
+/* params:
+{
+	fromPeer: 'SiXinWenUser',
+ 	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"atitudeVal":false}}',
+	convId: '5535e6dde4b078a907134b9f',
+	timestamp: 1430029280028
+}
+*/
+AV.Cloud.define("distributeMsg", function(request, response){
+	switch(response)
+});
 /* param example:
-{ fromPeer: 'SiXinWenUser',
-  receipt: false,
-  groupId: null,
-  content: { text: 'ok', atitudeVal: false },
-  convId: '5535e6dde4b078a907134b9f',
-  toPeers: [ 'walker', 'gyz' ],
-  bin: false,
-  transient: false,
-  sourceIP: '162.105.80.162',
-  timestamp: 1430029280028 }
+{ 
+	fromPeer: 'qwerty',
+	receipt: false,
+	groupId: null,
+	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"atitudeVal":false}}',
+	convId: '5535e6dde4b078a907134b9f',
+	toPeers: [ 'walker', 'cqyx', 'SiXinWenUser', 'gyz', 'LeanCloudxxx' ],
+	bin: false,
+	transient: false,
+	sourceIP: '162.105.236.74',
+	timestamp: 1430136990616 
+}
 
 */
 AV.Cloud.define("_messageReceived", function(request, response){
@@ -49,4 +67,5 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	          response.error("_messageReceived query conversation error!");
 	      }
 	    });
-})
+});
+
