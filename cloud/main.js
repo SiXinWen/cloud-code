@@ -3,11 +3,20 @@ function test (arg){
 	console.log("in test " + arg);
 	return "test";
 };
+
+/* return val ex:
+{ _resolved: true,
+  _rejected: false,
+  _resolvedCallbacks: [],
+  _rejectedCallbacks: [],
+  _result: { '0': 'Hello Sixinwen!' } }
+*/
 AV.Cloud.define("test2", function(request, response) {
 	console.log("in test2 " + request.params);
   response.success("Hello Sixinwen!");
-  	return "tx";
+  //	return "tx";	//will not be executed.
 });
+
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
 AV.Cloud.define("hello", function(request, response) {
