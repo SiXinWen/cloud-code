@@ -1,9 +1,25 @@
 require("cloud/app.js");
+function test (arg){
+	console.log(arg);
+};
+AV.Cloud.define("test2", function(request, response) {
+	console.log(request.params);
+	test(request.params);
+  response.success("Hello Sixinwen!");
+});
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
 AV.Cloud.define("hello", function(request, response) {
 	console.log(request.params);
-  response.success("Hello Sixinwen!");
+	test(request.params);
+	AV.Cloud.run("test2", {p1:"qychen"},  
+		success: function(data){
+      			console.log("调用成功，得到成功的应答data");
+  		},
+  		error: function(err){
+      			console.log("//处理调用失败");
+  		});
+  	response.success("Hello Sixinwen!");
 });
 
 /* param example:
