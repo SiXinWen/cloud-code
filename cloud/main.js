@@ -55,6 +55,7 @@ AV.Cloud.define("distributeMsg", function(request, response){
 			alert: content
 		}
 	});
+	console.log("end of distributeMsg");
 	response.success("");
 });
 /* param example:
