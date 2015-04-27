@@ -1,11 +1,10 @@
 require("cloud/app.js");
 function test (arg){
-	console.log(arg);
+	console.log("in test " + arg);
 	return "test";
 };
 AV.Cloud.define("test2", function(request, response) {
-	console.log(request.params);
-	test(request.params);
+	console.log("in test2 " + request.params);
   response.success("Hello Sixinwen!");
   	return "tx";
 });
