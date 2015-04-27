@@ -12,13 +12,14 @@ AV.Cloud.define("test2", function(request, response) {
 AV.Cloud.define("hello", function(request, response) {
 	console.log(request.params);
 	test(request.params);
-	AV.Cloud.run("test2", {p1:"qychen"},  
+	AV.Cloud.run("test2", {p1:"qychen"},  {
 		success: function(data){
       			console.log("调用成功，得到成功的应答data");
   		},
   		error: function(err){
       			console.log("//处理调用失败");
-  		});
+  		}
+  	});
   	response.success("Hello Sixinwen!");
 });
 
