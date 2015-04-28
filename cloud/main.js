@@ -101,7 +101,7 @@ AV.Cloud.define("_messageReceived", function(request, response){
 						console.log("distributeMsg fail");
 					}
 				});
-	          	response.success({"drop":"truthy"}); 
+	          	response.success({"toPeers":[conversation.get("m")[0]]}); 
 	          }
 	      },
 	      error: function(object, error) {
