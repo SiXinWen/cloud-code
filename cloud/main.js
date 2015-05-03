@@ -106,7 +106,8 @@ AV.Cloud.define("_messageReceived", function(request, response){
 				allPeers = conversation.get("m");
 				toPeers = [conversation.get("m")[0]];
 				console.log(toPeers);
-	          	response.success({"toPeers":toPeers}); 
+	          	//response.success({"toPeers":toPeers}); 
+	          	response.success();
 	          }
 	      },
 	      error: function(object, error) {
