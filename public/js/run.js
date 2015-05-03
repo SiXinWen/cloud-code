@@ -43,6 +43,7 @@ function main() {
             // 创建一个聊天室
             if (roomId){
                 convOld = rt.conv(roomId, function(roomObject) {
+                    console.log(roomObject);
                     if (roomObject){
                         roomObject.join(function() {
                             console.log('join success');
