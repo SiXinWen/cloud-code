@@ -1,6 +1,6 @@
 // 请将 AppId 改为你自己的 AppId
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
-var roomId = '5535e6dde4b078a907134b9f'
+var roomId = '5545ca14e4b03ccbae704613'
 // 每个客户端自定义的 id
 var clientId = 'qyz';
 var rt;
