@@ -118,4 +118,5 @@ AV.Cloud.define("_messageReceived", function(request, response){
 
 AV.Cloud.define("_receiversOffline", function(request, response){
 	console.log(request.params);
+	response.success({"offlinePeers":["test"]});
 });
