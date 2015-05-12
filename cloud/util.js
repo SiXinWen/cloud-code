@@ -3,7 +3,7 @@ module.exports.saveComment = function(params){
 	var Comments = AV.Object.extend("Comments");
     var comment = new Comments();
     comment.set("Content",content._lctext);
-    comment.set("Atitude",content._lcattrs.atitude);
+    comment.set("Attitude",content._lcattrs.attitude);
     comment.save(null, {
         success: function(comment) {
             // Execute any logic that should take place after the object is saved.
@@ -24,7 +24,7 @@ module.exports.updateStats = function(params){
 			var news = conversation.get("RelateNews");
 			news.fetch({
 				success: function(post) {
-    				if (params.parsedContent._lcattrs.atitude){
+    				if (params.parsedContent._lcattrs.attitude){
     					news.increment("SupportNum");
     				}else{
     					news.increment("RefuteNum");

@@ -16,7 +16,7 @@ AV.Cloud.define("hello", function(request, response) {
 /* params:
 {
 	fromPeer: 'SiXinWenUser',
- 	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"atitudeVal":false}}',
+ 	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"attitudeVal":false}}',
 	convId: '5535e6dde4b078a907134b9f',
 	timestamp: 1430029280028
 }
@@ -38,7 +38,7 @@ AV.Cloud.define("distributeMsg", function(request, response){
 	fromPeer: 'qwerty',
 	receipt: false,
 	groupId: null,
-	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"atitudeVal":false}}',
+	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"attitudeVal":false}}',
 	convId: '5535e6dde4b078a907134b9f',
 	toPeers: [ 'walker', 'cqyx', 'SiXinWenUser', 'gyz', 'LeanCloudxxx' ],
 	bin: false,
