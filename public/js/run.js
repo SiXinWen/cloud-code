@@ -55,7 +55,7 @@ function main() {
                             console.log('qychen receive')
                             console.log(data);
                             var text = data.msg.text;
-                            showLog(text, data.msg.attr.atitude);
+                            showLog(text, data.msg.attr.attitude);
                             goBottom();
                         });
                     }
@@ -81,7 +81,7 @@ function main() {
                         console.log('qychen receive')
                         console.log(data);
                         var text = data.msg.text;
-                        showLog(text, data.msg.atitude);
+                        showLog(text, data.msg.attr.attitude);
                         goBottom();
                     });
                     console.log('Conversation created callback');
@@ -288,20 +288,20 @@ function sendMsg() {
     var input = document.getElementById('new-msg');
     var val = input.value;
     //side
-    var atitude = document.getElementById('Support');
-    var bAtitude = new Boolean();
-    bAtitude = atitude.checked;
+    var attitude = document.getElementById('Support');
+    var battitude = new Boolean();
+    battitude = attitude.checked;
 
     convOld.send({
         text:val,
         attr:{
-            atitude:bAtitude
+            attitude:battitude
         }
     }, {
         type:'text'
     }, function(data) {
         input.value = '';
-        showLog(val,bAtitude);
+        showLog(val,battitude);
         goBottom();
     });
 }
