@@ -17,13 +17,12 @@ module.exports.saveComment = function(params){
     });
 }
 module.exports.updateStats = function(params){
-	console.log("updateStats");
 	var query = new AV.Query("_Conversation");
 	query.get(params.convId, {
 		success: function(conversation){
 			var news = conversation.get("RelateNews");
-			news.fetch({
-				success: function(post) {
+			news.fetch({	
+				success: function(news) {
     				if (params.parsedContent._lcattrs.attitude){
     					news.increment("SupportNum");
     				}else{
