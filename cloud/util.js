@@ -1,4 +1,4 @@
-function saveComment(params){
+module.exports.saveComment = function(params){
 	var content = params.parsedContent;
 	var Comments = AV.Object.extend("Comments");
     var comment = new Comments();
@@ -16,7 +16,7 @@ function saveComment(params){
         }
     });
 }
-function updateStats(params){
+module.exports.updateStats = function(params){
 	console.log("updateStats");
 	var query = new AV.Query("_Conversation");
 	query.get(params.convId, {
@@ -39,7 +39,7 @@ function updateStats(params){
 		}
 	});
 }
-function getToPeers(params){
+module.exports.getToPeers = function(params){
     toPeers = params.toPeers;
     return toPeers;
 }

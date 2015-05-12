@@ -1,5 +1,5 @@
 require("cloud/app.js");
-var util = require("util.js");
+var util = require("cloud/util.js");
 
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
