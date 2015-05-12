@@ -1,6 +1,7 @@
 require("cloud/app.js");
 
 function saveComment(params){
+	console.log("saveComment:" + params.content);
 	var content = params.parsedContent;
 	var Comments = AV.Object.extend("Comments");
     var comment = new Comments();
@@ -19,6 +20,7 @@ function saveComment(params){
     });
 }
 function updateStats(params){
+	console.log("updateStats");
 	var query = new AV.Query("_Conversation");
 	query.get(params.convId, {
 		success: function(conversation){
@@ -30,6 +32,7 @@ function updateStats(params){
     				}else{
     					news.increment("RefuteNum");
     				}
+    				news.save();
 				},
 				error: function(object, error){
 				}
