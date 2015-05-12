@@ -136,7 +136,7 @@ AV.Cloud.define('InsSignUp', function(request, response) {
 	NewUser.set("username", UserName);
 	NewUser.set("password", "password");
 	console.log("Tag2");
-    user.signUp(null, 
+    NewUser.signUp(null, 
 	{
 		success: function(NewUser) 
 		{
