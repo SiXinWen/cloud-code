@@ -1,7 +1,7 @@
 //parameter : InsID String
 //ReturnValue: {result : true}
 AV.Cloud.define('InsSignUp', function(request, response) {
-	var UserName = request.params.movie;
+	var UserName = request.params.InsID;
 	var NewUser = new AV.User();
 	var IfSuc = false;
 	
