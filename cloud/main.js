@@ -127,32 +127,32 @@ AV.Cloud.define("_receiversOffline", function(request, response){
 AV.Cloud.define('InsSignUp', function(request, response) {
 	//AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
 	var UserName = request.params.InsID;
-	console.log("Tag0");
+	//console.log("Tag0");
 	var NewUser = new AV.User();
 	var IfSuc = false;
-	console.log("Tag1");
+	//console.log("Tag1");
 	//sign up 
 	//username = InsID password = password
 	NewUser.set("username", UserName);
 	NewUser.set("password", "password");
-	console.log("Tag2");
+	//console.log("Tag2");
     NewUser.signUp(null, 
 	{
 		success: function(NewUser) 
 		{
 			ifSuc = true;
-			console.log("Tag3");
+			//console.log("Tag3");
 		},
 		error: function(NewUser, error) 
 		{
 			// Show the error message somewhere and let the user try again.
 			alert("Error: " + error.code + " " + error.message);
-			console.log("Tag4");
+			//console.log("Tag4");
 		}
 	});
 	var ReturnValue = {
 		result : IfSuc
 	};
-	console.log("Tag5");
+	//console.log("Tag5");
 	response.success(ReturnValue);
 });
