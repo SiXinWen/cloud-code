@@ -301,25 +301,6 @@ function sendMsg() {
         type:'text'
     }, function(data) {
         input.value = '';
-        //add to Database Comments
-        AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
-        var Comments = AV.Object.extend("Comments");
-        var comment = new Comments();
-        comment.set("Content",val);
-        comment.set("Atitude",bAtitude);
-        comment.save(null, {
-            success: function(comment) {
-                // Execute any logic that should take place after the object is saved.
-                //   alert('New object created with objectId: ' + comment.id);
-            },
-            error: function(gameScore, error) {
-                // Execute any logic that should take place if the save fails.
-                // error is a AV.Error with an error code and description.
-                alert('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-        //add to Database end
-
         showLog(val,bAtitude);
         goBottom();
     });
