@@ -22,7 +22,32 @@ function test (arg){
 	console.log("in test " + arg);
 	return "test";
 };
-
+// UpdateSupport
+// News: NewsID
+// Atitude: boolean
+function UpdateSupport(NewsID, Atitude)
+{
+	var News = AV.Object.extend("News");
+	var query = new AV.Query("News");
+	query.get("NewsID", 
+	{
+		success: function(news) 
+		{
+			// The object was retrieved successfully.
+			if(Atitude)
+			{
+				news.increment("SupportNum");
+			}
+			else 
+				news.increment("RefuteNum");
+		},
+		error: function(object, error) 
+		{
+			// The object was not retrieved successfully.
+			// error is a AV.Error with an error code and description.
+		}
+	});
+}
 /* return val ex:
 { _resolved: true,
   _rejected: false,
