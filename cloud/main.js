@@ -125,7 +125,9 @@ AV.Cloud.define("_receiversOffline", function(request, response){
 //parameter : InsID String
 //ReturnValue: {result : true}
 AV.Cloud.define('InsSignUp', function(request, response) {
+	//AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
 	var UserName = request.params.InsID;
+	console.log("Tag0");
 	var NewUser = new AV.User();
 	var IfSuc = false;
 	console.log("Tag1");
