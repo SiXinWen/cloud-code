@@ -1,7 +1,7 @@
 require("cloud/app.js");
 
 function saveComment(params){
-	var content = JSON.parse(params.content);
+	var content = params.parsedContent;
 	var Comments = AV.Object.extend("Comments");
     var comment = new Comments();
     comment.set("Content",content._lctext);
@@ -18,37 +18,26 @@ function saveComment(params){
         }
     });
 }
-function test (arg){
-	console.log("in test " + arg);
-	return "test";
-};
+function UpdateStats(params){
+	var query = new AV.Query("_Conversation");
+	query.get(params.convId, {
+		success: function(conversation){
+			//
+		},
+		error: function(object, error){
 
-/* return val ex:
-{ _resolved: true,
-  _rejected: false,
-  _resolvedCallbacks: [],
-  _rejectedCallbacks: [],
-  _result: { '0': 'Hello Sixinwen!' } }
-*/
-AV.Cloud.define("test2", function(request, response) {
-	console.log("in test2 " + request.params);
-  response.success("Hello Sixinwen!");
-  //	return "tx";	//will not be executed.
-});
+		}
+	});
+}
+function getToPeers(params){
+    toPeers = params.toPeers;
+    return toPeers;
+}
 
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
 AV.Cloud.define("hello", function(request, response) {
 	console.log(request.params);
-	console.log(test(request.params));
-	console.log(AV.Cloud.run("test2", {p1:"qychen"},  {
-		success: function(data){
-      			console.log("调用成功，得到成功的应答data");
-  		},
-  		error: function(err){
-      			console.log("//处理调用失败");
-  		}
-  	}));
   	response.success("Hello Sixinwen!");
 });
 
@@ -93,47 +82,12 @@ AV.Cloud.define("distributeMsg", function(request, response){
 
 */
 AV.Cloud.define("_messageReceived", function(request, response){
-	var convId = request.params.convId;
-	var fromPeer = request.params.fromPeer;
-	var content = request.params.content;
-	console.log(request.params);
-	saveComment(request.params);
-	var query = new AV.Query("_Conversation");
-	query.get(convId, {
-	      success: function(conversation) {
-	          var x = 2;
-	          if(x == 0){
-	             console.log("_messageReceived send");
-	             response.success();
-	          } else if(x == 1) {
-	          	
-	             console.log("_messageReceived drop");
-	             response.success({"drop":"truthy"}); 
-	          }else if(x == 2){
-	          	AV.Cloud.run("distributeMsg", {
-		          		timestamp:request.params.timestamp,
-		          		content:request.params.content
-		        }, {
-		          	success: function(result) {
-	   					console.log("distributeMsg success");
-					},
-					error: function(error) {
-						console.log("distributeMsg fail");
-					}
-				});
-
-				//toPeers
-				allPeers = conversation.get("m");
-				toPeers = [conversation.get("m")[0]];
-				console.log(toPeers);
-	          	//response.success({"toPeers":toPeers}); 
-	          	response.success();
-	          }
-	      },
-	      error: function(object, error) {
-	          response.error("_messageReceived query conversation error!");
-	      }
-	    });
+	var params = request.params;
+	params.parsedContent = JSON.parse(params.content);
+	var convId = params.convId;
+	saveComment(params);
+	UpdateStats(params);
+	response.success({'toPeers':getToPeers(params)});
 });
 
 AV.Cloud.define("_receiversOffline", function(request, response){
