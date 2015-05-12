@@ -28,9 +28,8 @@ function test (arg){
 function UpdateSupport(NewsID, Atitude)
 {
 	var News = AV.Object.extend("News");
-	var query = new AV.Query("News");
-	query.get("NewsID", 
-	{
+	var query = new AV.Query(News);
+	query.get("NewsID",{
 		success: function(news) 
 		{
 			// The object was retrieved successfully.
