@@ -27,21 +27,31 @@ function test (arg){
 // Atitude: boolean
 function UpdateSupport(NewsID, Atitude)
 {
+	
 	var News = AV.Object.extend("News");
 	var query = new AV.Query(News);
-	query.get("NewsID",{
+	
+	query.get("552d0880e4b0f543686dbdff",{
 		success: function(news) 
 		{
+			
 			// The object was retrieved successfully.
 			if(Atitude)
 			{
 				news.increment("SupportNum");
+				news.save();
 			}
 			else 
+			{
 				news.increment("RefuteNum");
+				news.save();
+			}
+			
 		},
 		error: function(object, error) 
 		{
+			
+			alert(error.description);
 			// The object was not retrieved successfully.
 			// error is a AV.Error with an error code and description.
 		}

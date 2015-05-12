@@ -5,18 +5,22 @@ function UpdateSupport(NewsID, Atitude)
 	
 	var News = AV.Object.extend("News");
 	var query = new AV.Query(News);
-	//alert(NewsID);
-	query.get("552d0880e4b0f543686dbdff", 
-	{
+	
+	query.get("552d0880e4b0f543686dbdff",{
 		success: function(news) 
 		{
+			
 			// The object was retrieved successfully.
 			if(Atitude)
 			{
 				news.increment("SupportNum");
+				news.save();
 			}
 			else 
+			{
 				news.increment("RefuteNum");
+				news.save();
+			}
 			
 		},
 		error: function(object, error) 
