@@ -55,7 +55,7 @@ function main() {
                             console.log('qychen receive')
                             console.log(data);
                             var text = data.msg.text;
-                            showLog(text, data.msg.attr.atitudeVal);
+                            showLog(text, data.msg.attr.atitude);
                             goBottom();
                         });
                     }
@@ -81,7 +81,7 @@ function main() {
                         console.log('qychen receive')
                         console.log(data);
                         var text = data.msg.text;
-                        showLog(text, data.msg.atitudeVal);
+                        showLog(text, data.msg.atitude);
                         goBottom();
                     });
                     console.log('Conversation created callback');
@@ -295,7 +295,7 @@ function sendMsg() {
     convOld.send({
         text:val,
         attr:{
-            atitudeVal:bAtitude
+            atitude:bAtitude
         }
     }, {
         type:'text'

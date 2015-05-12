@@ -1,51 +1,5 @@
 require("cloud/app.js");
-
-function saveComment(params){
-	console.log("saveComment:" + params.content);
-	var content = params.parsedContent;
-	var Comments = AV.Object.extend("Comments");
-    var comment = new Comments();
-    comment.set("Content",content._lctext);
-    comment.set("Atitude",content._lcattrs.atitudeVal);
-    comment.save(null, {
-        success: function(comment) {
-            // Execute any logic that should take place after the object is saved.
-            //   alert('New object created with objectId: ' + comment.id);
-        },
-        error: function(gameScore, error) {
-            // Execute any logic that should take place if the save fails.
-            // error is a AV.Error with an error code and description.
-            //alert('Failed to create new object, with error code: ' + error.message);
-        }
-    });
-}
-function updateStats(params){
-	console.log("updateStats");
-	var query = new AV.Query("_Conversation");
-	query.get(params.convId, {
-		success: function(conversation){
-			var news = conversation.get("RelateNews");
-			news.fetch({
-				success: function(post) {
-    				if (params.parsedContent._lcattrs.atitudeVal){
-    					news.increment("SupportNum");
-    				}else{
-    					news.increment("RefuteNum");
-    				}
-    				news.save();
-				},
-				error: function(object, error){
-				}
-			});
-		},
-		error: function(object, error){
-		}
-	});
-}
-function getToPeers(params){
-    toPeers = params.toPeers;
-    return toPeers;
-}
+var util = require("util.js");
 
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
@@ -98,9 +52,9 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var params = request.params;
 	params.parsedContent = JSON.parse(params.content);
 	var convId = params.convId;
-	saveComment(params);
-	updateStats(params);
-	response.success({'toPeers':getToPeers(params)});
+	util.saveComment(params);
+	util.updateStats(params);
+	response.success({'toPeers':util.getToPeers(params)});
 });
 
 AV.Cloud.define("_receiversOffline", function(request, response){
