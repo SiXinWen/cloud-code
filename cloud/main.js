@@ -1,4 +1,23 @@
 require("cloud/app.js");
+
+function saveComment(params){
+	var content = JSON.parse(params.content);
+	var Comments = AV.Object.extend("Comments");
+    var comment = new Comments();
+    comment.set("Content",content._lctext);
+    comment.set("Atitude",content._lcattrs.atitudeVal);
+    comment.save(null, {
+        success: function(comment) {
+            // Execute any logic that should take place after the object is saved.
+            //   alert('New object created with objectId: ' + comment.id);
+        },
+        error: function(gameScore, error) {
+            // Execute any logic that should take place if the save fails.
+            // error is a AV.Error with an error code and description.
+            //alert('Failed to create new object, with error code: ' + error.message);
+        }
+    });
+}
 function test (arg){
 	console.log("in test " + arg);
 	return "test";
@@ -78,6 +97,7 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var fromPeer = request.params.fromPeer;
 	var content = request.params.content;
 	console.log(request.params);
+	saveComment(request.params);
 	var query = new AV.Query("_Conversation");
 	query.get(convId, {
 	      success: function(conversation) {
