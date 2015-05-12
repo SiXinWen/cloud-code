@@ -18,14 +18,24 @@ function saveComment(params){
         }
     });
 }
-function UpdateStats(params){
+function updateStats(params){
 	var query = new AV.Query("_Conversation");
 	query.get(params.convId, {
 		success: function(conversation){
-			//
+			var news = conversation.get("RelateNews");
+			news.fetch({
+				success: function(post) {
+    				if (params.parsedContent._lcattrs.atitudeVal){
+    					news.increment("SupportNum");
+    				}else{
+    					news.increment("RefuteNum");
+    				}
+				},
+				error: function(object, error){
+				}
+			});
 		},
 		error: function(object, error){
-
 		}
 	});
 }
@@ -86,7 +96,7 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	params.parsedContent = JSON.parse(params.content);
 	var convId = params.convId;
 	saveComment(params);
-	UpdateStats(params);
+	updateStats(params);
 	response.success({'toPeers':getToPeers(params)});
 });
 
