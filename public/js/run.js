@@ -261,10 +261,13 @@ function main() {
     });
 
 }
-
+function parse_msg(msg_text){
+    return msg_text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
 // demo 中输出代码
 function showLog(msg_text, at) {
    console.log('show log');
+   msg_text=parse_msg(msg_text);
     console.log(msg_text);
     console.log(at);
     var div = document.getElementById('discuss');
