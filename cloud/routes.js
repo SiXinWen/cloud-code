@@ -1,6 +1,8 @@
 module.exports.share = function(req, res) {
 	var news_id = req.params.nid;
-	console.log(news_id);
+	console.log("news_id is " + news_id);
+	console.log("news_id is " + req.query["nid"]);
+	console.log("news_id is " + req.body);
 	var News = AV.Object.extend("News");
 	var query = new AV.Query(News);
 	query.get(news_id, {
