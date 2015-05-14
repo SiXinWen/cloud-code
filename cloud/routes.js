@@ -1,11 +1,12 @@
 module.exports.share = function(req, res) {
 	var news_id = req.params.nid;
+	console.log(news_id);
 	var News = AV.Object.extend("News");
 	var query = new AV.Query(News);
 	query.get(news_id, {
 		success: function(news) {
 			var convId = news.get("convId");
-			res.setHeader("Set-Cookie", ["convId=" + convId])
+			res.setHeader("Set-Cookie", ["convId=" + convId]);
 			return res.render("share", {
 				newsHead: news.get("Title"),
 				newsContent:news.get("Content"),
@@ -18,6 +19,6 @@ module.exports.share = function(req, res) {
 		    	message:"error occured in sixinwen"
 		    });
 		}
-	};
+	});
 
 };
