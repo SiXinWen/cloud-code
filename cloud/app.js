@@ -13,12 +13,8 @@ app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Congrats, you just set up your app!' });
 });
 
-app.get("/share/", function(req, res) {
-  res.render('hello', { message: 'Congrats, you just set up your app!' });
-});
-
 app.get("/share", routes.share);
-app.get("/share/:nid", routes.share);
+//app.get("/sharex/:newsid", routes.share);
 
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
 app.listen();
