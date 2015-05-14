@@ -1,6 +1,6 @@
 // 请将 AppId 改为你自己的 AppId
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
-var roomId = '5545ca14e4b03ccbae704613'
+var roomId;
 // 每个客户端自定义的 id
 var clientId = '测试';
 var rt;
@@ -21,10 +21,17 @@ function goBottom () {
     var dom = document.getElementById('discuss');
     dom.scrollTop = dom.scrollHeight;
 }
+
+function getRoomId(){
+    var cookies = document.cookie;
+    var reg = new RegExp("convId=([0-9a-zA-Z]+)");
+    roomId = cookies.match(reg)[1];
+}
+
 // Demo 中聊天相关的主逻辑
 function main() {
     goBottom();
-
+    getRoomId();
     // 创建聊天实例（支持单页多实例）
     rt = AV.realtime({
         appId: appId,

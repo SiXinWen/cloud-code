@@ -6,7 +6,7 @@ module.exports.share = function(req, res) {
 		});
 	}
 	//console.log("1 params is " + req.params.newsid);//undefined
-	console.log("2 news_id is " + news_id);
+	//console.log("2 news_id is " + news_id);
 	//console.log("news_id is " + req.body);//object
 	var News = AV.Object.extend("News");
 	var query = new AV.Query(News);
