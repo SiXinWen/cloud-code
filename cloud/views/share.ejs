@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Comments</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bubblebox.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="container-fluid">
+		<!--
+  <nav class="navbar navbar-inverse " role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+				<span class="sr-only">切换导航</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">SiXinWen</a>
+		</div>
+		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">News</a>
+				</li>
+				<li>
+					<a href="#">Me</a>
+				</li>
+			</ul>
+			<a href="#" class="btn btn-default navbar-right">Logout</a>
+
+		</div>
+	</nav>
+	-->
+	<div id="header" class="row" >
+		<div id="symbol" class="col-md-7">
+			<p class="lead">撕新闻标</p>
+		</div>
+		<div id="navigation" class="col-md-5">
+			<div class="lead">
+				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">home</a>
+				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">news</a>
+				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">me</a>
+				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">exit</a>
+				<form class="form-search" >
+					<input type="text" class="form-control" style="float:left;width:70px;margin:0px 10px 0px 80px;">
+					<button type="submit" class="btn btn-default" style="float:left;width:70px;margin:0px;">Search</button>
+				</form>
+
+			</div>
+
+		</div>
+		<br/>
+
+	</div>
+	<div class="row" style="margin:0px;padding:0px">
+		<div id="news" class="col-md-4" style="margin:0px;padding:0px">
+			<div class="hero-unit">
+				<h1 id="newsHead">三十个糟糕程序员抵不过一款好工具</h1>
+				<img id="newsPic" src="http://cms.csdnimg.cn/article/201401/24/52e20a0dddce3.jpg" alt="..." class="img-rounded" style="width:80%;height:auto;">
+				<p id="newsContent">
+					1. IDE：钟情于VC++6.0，但是也感觉Visual Studio2008,2010的强.可能迟早得转到VS高版本上来。在安装VC++6.0的时候记得安装sp6补丁和msdn（MSDN_1.5_精简安装)
+					<br/>
+					2. 辅助
+Visual Assist，喜欢它代码自动补全，快速注释，头文件源文件切换：VC_VA_X_1561(最适合VC6)，有了此工具，大概可以节省输入时间的30％以上
+WndTabs：用于显示打开过的源文件，并将源程序用Tab页面来管理，VC 6.0必装工具
+VC6LineNumberAddin ：VC6.0显示行号插件
+astyle：代码批量格式整理插
+MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断点标签等，还可以显示修改的部分
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#myModal" data-toggle="modal">参看全部 »</a>
+				</p>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">News</h4>
+							</div>
+							<div class="modal-body">
+								1. IDE：钟情于VC++6.0，但是也感觉Visual Studio2008,2010的强.可能迟早得转到VS高版本上来。在安装VC++6.0的时候记得安装sp6补丁和msdn（MSDN_1.5_精简安装)
+								<br/>
+								2. 辅助
+Visual Assist，喜欢它代码自动补全，快速注释，头文件源文件切换：VC_VA_X_1561(最适合VC6)，有了此工具，大概可以节省输入时间的30％以上
+WndTabs：用于显示打开过的源文件，并将源程序用Tab页面来管理，VC 6.0必装工具
+VC6LineNumberAddin ：VC6.0显示行号插件
+astyle：代码批量格式整理插
+MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断点标签等，还可以显示修改的部分
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal -->
+				</div>
+			</div>
+		</div>
+		<div id="comment" class="col-md-8">
+			<div style="float:left">
+				<span class="glyphicon glyphicon-thumbs-up"></span>
+			</div>
+			<div style="float:right">
+				<span class="glyphicon glyphicon-thumbs-down"></span>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 35%">
+					<span>35%</span>
+				</div>
+				<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
+					<span >65%</span>
+				</div>
+
+			</div>
+			<div id="discuss" style="overflow: auto;height:320px;border:2px solid;border-radius:10px;">
+				<a href="#">Ontime</a>
+				|
+				<a href="#">Hot</a>
+				|
+				<a href="#">People you are following</a>
+				<br/>
+				<div class="media">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" style="width:40px" src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>
+					</div>
+
+					<div class="media-body">
+						<div class="leftbubblebox">
+							<div class="left">
+								<h4 class="media-heading" >
+									我会让自己创造的软件对别人的生活有帮助</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="media">
+					<div class="media-body" >
+						<div class="rightbubblebox">
+							<div class="right">
+								<h4 class="media-heading" >
+									我会在开发工作结束时，将源代码、文档交予同事，不会让项目因我的离开而无法继续；即使遭到不公正待遇，我也不会出卖原有公司和其所服务用户的源代码、技术资料、文档，以及其他形式秘密
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="media-right">
+						<a href="#">
+							<img class="media-object" style="width:40px" src="http://f.hiphotos.baidu.com/image/pic/item/4bed2e738bd4b31cb2e27bbd84d6277f9f2ff8de.jpg" alt="..."></a>
+					</div>
+
+				</div>
+
+				<div class="media">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" style="width:40px" src="http://g.hiphotos.baidu.com/image/pic/item/c2fdfc039245d688024672a2a7c27d1ed21b2474.jpg" alt="..."></a>
+					</div>
+					<div class="media-body">
+						<div class="leftbubblebox">
+							<div class="left">
+								<h4 class="media-heading">我不会将可能威胁他人计算机及个人信息安全的代码交予他人，不在技术社区和其他场合讨论相关技术</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="media">
+					<div class="media-body" >
+						<div class="rightbubblebox">
+							<div class="right">
+								<h4 class="media-heading">我会在自己能力范围内为用户提供帮助，与他们交流想法，满足他们的要求，不会将责任推卸给对计算机知识陌生的用户</h4>
+							</div>
+						</div>
+					</div>
+					<div class="media-right">
+						<a href="#">
+							<img class="media-object" style="width:40px" src="http://f.hiphotos.baidu.com/image/pic/item/c8177f3e6709c93db586cdf19c3df8dcd1005444.jpg" alt="..."></a>
+					</div>
+				</div>
+				<br/>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div style="border:2px solid;border-radius:10px;">
+				<h3>What's your opinion?</h3>
+				<form role="form" >
+					<textarea id="new-msg" class="form-control" style="width:95%;margin:15px 15px 0px 15px;resize:none" placeholder="Enter your opinion here..." rows="2" ></textarea>
+					<br/>
+					<div style="margin: 0px 10px 0px 20px">
+						<input id="Support" type="radio" name="side" value="yes">
+						正方
+						<input type="radio" name="side" value="no">
+						反方
+						<input type="checkbox" name="anonymous">
+						匿名
+						<a id="send-btn" type="submit" class="btn btn-default pull-right" >提交</a>
+					</div>
+				</form>
+				<br/>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--script src="http://www.w3cschool.cc/try/angularjs/1.2.5/angular.min.js"></script-->
+<script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+	<script src="js/config.js"></script>
+	<script src="bower_components/leancloud-realtime/src/AV.realtime.js"></script>
+	<script src="js/run.js"></script>
+	<script src="bower_components/leancloud-push/src/AV.push.js"></script>
+		
+<!-- JS for changing newscontent -->
+<script src="js/NewsContent.js"></script>
+</body>
+</html>

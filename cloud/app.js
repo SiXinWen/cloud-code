@@ -1,5 +1,6 @@
 // 在 Cloud code 里初始化 Express 框架
 var express = require('express');
+var routes = require('cloud/routes');
 var app = express();
 
 // App 全局配置
@@ -11,6 +12,8 @@ app.use(express.bodyParser());    // 读取请求 body 的中间件
 app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Congrats, you just set up your app!' });
 });
+
+app.get("/share/:nid", routes.share);
 
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
 app.listen();
