@@ -2,7 +2,7 @@
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
 var roomId;
 // 每个客户端自定义的 id
-var clientId = '测试';
+var clientId = 'share';
 var rt;
 var conv;
 var convOld;
