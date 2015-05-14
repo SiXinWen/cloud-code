@@ -17,7 +17,7 @@ module.exports.share = function(req, res) {
 			return res.render("share", {
 				newsHead: news.get("Title"),
 				newsContent:news.get("Content"),
-				newsPic_src:news.get("Picture")
+				newsPic_src:news.get("Picture")._url
 			});
 	    },
 		error: function(object, error) {
