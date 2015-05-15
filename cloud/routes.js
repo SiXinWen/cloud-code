@@ -12,12 +12,17 @@ module.exports.share = function(req, res) {
 	var query = new AV.Query(News);
 	query.get(news_id, {
 		success: function(news) {
-			var convId = news.get("conv").id;
+			var convId = "";
+			var conv = news.get("conv");
+			if (conv)
+				convId = conv.id;
 			res.setHeader("Set-Cookie", ["convId=" + convId]);
 			return res.render("share", {
 				newsHead: news.get("Title"),
 				newsContent:news.get("Content"),
-				newsPic_src:news.get("Picture")._url
+				newsPic_src:news.get("Picture")._url,
+				AffirmativeView:news.get("AffirmativeView"),
+				OpposeView:news.get("OpposeView")
 			});
 	    },
 		error: function(object, error) {
