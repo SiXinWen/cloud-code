@@ -298,6 +298,8 @@ function sendMsg() {
     }
 	//Internal time is bigger than 2 seconds
 	var now = myDate.getSeconds();
+	console.log(now);
+	console.log(sessionStorage.lastTime);
 	var distance = Math.abs(now - sessionStorage.lastTime);
 	if(distance < 2)
 	{
