@@ -287,6 +287,8 @@ function showLog(msg_text, at) {
         console.log("bad arguments.");
     }
 }
+var myDate = new Date();
+sessionStorage.lastTime = myDate.getSeconds();
 
 function sendMsg() {
     console.log('********sendMsg********');
@@ -294,6 +296,15 @@ function sendMsg() {
         alert('请先连接服务器！');
         return;
     }
+	//Internal time is bigger than 2 seconds
+	var now = myDate.getSeconds();
+	var distance = Math.abs(now - sessionStorage.lastTime);
+	if(distance < 2)
+	{
+		alert("发送消息过快，请休息下再发");
+		return;
+	}
+	sessionStorage.lastTime = myDate.getSeconds();
     //msg
     var input = document.getElementById('new-msg');
     var val = input.value;
