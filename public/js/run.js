@@ -297,16 +297,16 @@ function sendMsg() {
         return;
     }
 	//Internal time is bigger than 2 seconds
-	var now = myDate.getSeconds();
-	console.log(now);
-	console.log(sessionStorage.lastTime);
-	var distance = Math.abs(now - sessionStorage.lastTime);
+	var now = new Date();
+	
+	
+	var distance = Math.abs(now.getSeconds() - sessionStorage.lastTime);
 	if(distance < 2)
 	{
 		alert("发送消息过快，请休息下再发");
 		return;
 	}
-	sessionStorage.lastTime = myDate.getSeconds();
+	sessionStorage.lastTime = now.getSeconds();
     //msg
     var input = document.getElementById('new-msg');
     var val = input.value;
