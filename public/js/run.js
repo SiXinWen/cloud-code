@@ -310,8 +310,16 @@ function sendMsg() {
     //msg
     var input = document.getElementById('new-msg');
     var val = input.value;
+    //should send something!
+    if(val=="")
+        return;
     //side
     var attitude = document.getElementById('Support');
+    var oppse = document.getElementById("Oppose");
+    if(attitude.checked==false && oppse.checked==false){
+        alert("Please choose your attitude first!");
+        return ;
+    }
     var battitude = new Boolean();
     battitude = attitude.checked;
 
