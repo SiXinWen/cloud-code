@@ -274,13 +274,13 @@ function showLog(msg_text, at) {
     if(arguments.length==2){
         if(arguments[1]==true){
             new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
-     'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
+     'src="img/left.png" alt="..."></a>'+
      '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg_text + 
      '</h4></div></div></div></div>'
             div.innerHTML += new_div;
 
         }else{
-            new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
+            new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="img/right.png" alt="..."></a>'+'</div>';
             div.innerHTML += new_div;
         }
     }else{
@@ -317,7 +317,7 @@ function sendMsg() {
     var attitude = document.getElementById('Support');
     var oppse = document.getElementById("Oppose");
     if(attitude.checked==false && oppse.checked==false){
-        alert("Please choose your attitude first!");
+        alert("请选择态度!");
         return ;
     }
     var battitude = new Boolean();
