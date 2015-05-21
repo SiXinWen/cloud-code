@@ -264,6 +264,10 @@ function main() {
 function parse_msg(msg_text){
     return msg_text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
+
+function trim_msg(msg_text){
+    return msg_text.replace(/ /g,"").replace(/\n/g,"");
+}
 // demo 中输出代码
 function showLog(msg_text, at) {
    console.log('show log');
@@ -296,23 +300,12 @@ function sendMsg() {
         alert('请先连接服务器！');
         return;
     }
-	//Internal time is bigger than 2 seconds
-	var now = new Date();
-	
-	
-	var distance = Math.abs(now.getSeconds() - sessionStorage.lastTime);
-	if(distance < 2)
-	{
-		alert("发送消息过快，请休息下再发");
-		return;
-	}
-	sessionStorage.lastTime = now.getSeconds();
+    
     //msg
     var input = document.getElementById('new-msg');
     var val = input.value;
     //should send something!
-    if(val=="")
-        return;
+
     //side
     var attitude = document.getElementById('Support');
     var oppse = document.getElementById("Oppose");
@@ -322,6 +315,20 @@ function sendMsg() {
     }
     var battitude = new Boolean();
     battitude = attitude.checked;
+
+    if(trim_msg(val)=="")
+        return;
+    
+    //Internal time is bigger than 2 seconds
+    var now = new Date();
+    
+    var distance = Math.abs(now.getSeconds() - sessionStorage.lastTime);
+    if(distance < 2)
+    {
+    alert("发送消息过快，请休息下再发");
+    return;
+    }
+    sessionStorage.lastTime = now.getSeconds();
 
     convOld.send({
         text:val,
