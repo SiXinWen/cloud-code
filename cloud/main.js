@@ -63,8 +63,6 @@ AV.Cloud.define("_receiversOffline", function(request, response){
 	console.log('_receiversOffline' + JSON.stringify(request.params));
 	response.success({"offlinePeers":["test"]});
 });
-
-
 //parameter : InsID String
 //ReturnValue: {result : true}
 AV.Cloud.define('InsSignUp', function(request, response) {
