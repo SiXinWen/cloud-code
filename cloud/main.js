@@ -101,6 +101,7 @@ AV.Cloud.define('InsSignUp', function(request, response) {
 
 //updateHotComments
 AV.Cloud.define("updateHotComments", function(request, response){
+    console.log("1");
 	var Comments = AV.Object.extend("Comments");
 	var query = new AV.Query(Comments);
 	query.greaterThan("heat",10);
@@ -108,21 +109,19 @@ AV.Cloud.define("updateHotComments", function(request, response){
 		success: function(results){
 			for(var i = 0; i < results.length; i++)
 			{
-				if(results[i].heat>10)
-				{
-					var HotComments = AV.Object.extend("HotComments");
-					var hotComments = new HotComments();
-					hotComments.set("Content",results[i].Content);
-					hotComments.set("targetNews",results[i].targetNews);
-					hotComments.save(null,{
-						success: function(hotComments){
-							console.log("updateHotComments success");
-						},
-						error: function(hotComments,error){
-							console.log("updateHotComments error");
-						}
-					});
-				}
+                console.log(results[i]);
+				var HotComments = AV.Object.extend("HotComments");
+                var hotComments = new HotComments();
+                hotComments.set("Content",results[i].attributes.Content);
+                hotComments.set("targetNews",results[i].attributes.targetNews);
+                hotComments.save(null,{
+                    success: function(hotComments){
+                        console.log("updateHotComments success");
+                    },
+                    error: function(hotComments,error){
+                        console.log(error);
+                    }
+                });
 			}
 		},
 		error: function(error){
