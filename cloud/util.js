@@ -1,4 +1,4 @@
-module.exports.saveComment = function(params){
+module.exports.saveComment = function(response, params){
 	var content = params.parsedContent;
 	var Comments = AV.Object.extend("Comments");
     var comment = new Comments();
@@ -6,10 +6,15 @@ module.exports.saveComment = function(params){
     comment.set("Attitude",content._lcattrs.attitude);
     comment.save(null, {
         success: function(comment) {
+            params.parsedContent._lcattrs["commentId"] = comment.id;
+            console.log('saveComment afterSaveCommet 2:' + JSON.stringify(params.parsedContent));
+            console.log(params.parsedContent);
+            response.success({'toPeers':params.toPeers, 'content':JSON.stringify(params.parsedContent)});            
             // Execute any logic that should take place after the object is saved.
             //   alert('New object created with objectId: ' + comment.id);
         },
         error: function(object, error) {
+            return null;
             // Execute any logic that should take place if the save fails.
             // error is a AV.Error with an error code and description.
             //alert('Failed to create new object, with error code: ' + error.message);

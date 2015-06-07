@@ -33,12 +33,13 @@ AV.Cloud.define("distributeMsg", function(request, response){
 	console.log("end of distributeMsg");
 	response.success("");
 });
+
 /* param example:
 { 
 	fromPeer: 'qwerty',
 	receipt: false,
 	groupId: null,
-	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"attitudeVal":false}}',
+	content: '{"_lctype":-1,"_lctext":"sas","_lcattrs":{"attitude":false}}',
 	convId: '5535e6dde4b078a907134b9f',
 	toPeers: [ 'walker', 'cqyx', 'SiXinWenUser', 'gyz', 'LeanCloudxxx' ],
 	bin: false,
@@ -52,13 +53,14 @@ AV.Cloud.define("_messageReceived", function(request, response){
 	var params = request.params;
 	params.parsedContent = JSON.parse(params.content);
 	var convId = params.convId;
-	util.saveComment(params);
+    params.toPeers = util.getToPeers(params);
+	util.saveComment(response, params);
+
 	util.updateStats(params);
-	response.success({'toPeers':util.getToPeers(params)});
 });
 
 AV.Cloud.define("_receiversOffline", function(request, response){
-	console.log(request.params);
+	console.log('_receiversOffline' + JSON.stringify(request.params));
 	response.success({"offlinePeers":["test"]});
 });
 
