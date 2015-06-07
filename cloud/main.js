@@ -103,17 +103,28 @@ AV.Cloud.define('InsSignUp', function(request, response) {
 AV.Cloud.define("updateHotComments", function(request, response){
     console.log("1");
 	var Comments = AV.Object.extend("Comments");
+	var HotComments = AV.Object.extend("HotComments");
 	var query = new AV.Query(Comments);
-	query.greaterThan("heat",10);
+	var duquery = new AV.Query(HotComments);//duplicate query	
+	duquery.find({
+		success: function(hotResults){
+			
+			query.greaterThan("heat",10);
 	query.find({
 		success: function(results){
-			for(var i = 0; i < results.length; i++)
+			var hotCommentId = [];
+			for(var i = 0; i < hotResults.length; i++)
 			{
-                
+				hotCommentId.push(hotResults[i].attributes.Comments);
+			}
+			for(var i = 0; i < results.length; i++)
+			{   
+				if(results[i].attributes.Comments in hotCommentId)
+					continue;
                 console.log(results[i]);
-				var HotComments = AV.Object.extend("HotComments");
                 var hotComments = new HotComments();
-                hotComments.set("Comments", results[i].attributes.Comments);
+                hotComments.set("Comments", results[i].attributes.Comments);//Comments pointer
+				hotComments.set("TargetConv",results[i].attributes.TargetConv);//TargetConv: string
                 hotComments.save(null,{
                     success: function(hotComments){
                         console.log("updateHotComments success");
@@ -128,4 +139,12 @@ AV.Cloud.define("updateHotComments", function(request, response){
 			console.log('error updateHotComments');
 		}
 	});
+			
+			
+		},
+		error{
+			
+		}
+	});
+	
 });
