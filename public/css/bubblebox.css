@@ -7,8 +7,9 @@
 	-webkit-border-radius: 20px;
 	border-radius: 15px;
 	border-top: 1px solid #fff;
-	background-color: #A6DADC;
+	background-color: #0066FF;
 	word-wrap: break-word;
+	color: white;
 }
 .rightbubblebox {
 	position: relative;
@@ -19,8 +20,9 @@
 	-webkit-border-radius: 20px;
 	border-radius: 15px;
 	border-top: 1px solid #fff;
-	background-color: #33FF33;
+	background-color: #FF0000;
 	word-wrap: break-word;
+	color: white;
 }
 .left:before{
 	content: "\00a0";
@@ -32,7 +34,7 @@
 	height: 0;
 	border-width: 10px 20px 10px 0;
 	border-style: solid;
-	border-color: transparent #A6DADC transparent transparent;
+	border-color: transparent #0066FF transparent transparent;
 }
 .right:before {
 	content: "\00a0";
@@ -44,5 +46,5 @@
 	height: 0;
 	border-width: 10px 0 10px 20px;
 	border-style: solid;
-	border-color: transparent transparent transparent  #33FF33;
+	border-color: transparent transparent transparent  #FF0000;
 }
