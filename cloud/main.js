@@ -97,3 +97,36 @@ AV.Cloud.define('InsSignUp', function(request, response) {
 	//console.log("Tag5");
 	response.success(ReturnValue);
 });
+
+
+//updateHotComments
+AV.Cloud.define("updateHotComments", function(request, response){
+	var Comments = AV.Object.extend("Comments");
+	var query = new AV.Query(Comments);
+	query.greaterThan("heat",10);
+	query.find({
+		success: function(results){
+			for(var i = 0; i < results.length; i++)
+			{
+				if(results[i].heat>10)
+				{
+					var HotComments = AV.Object.extend("HotComments");
+					var hotComments = new HotComments();
+					hotComments.set("Content",results[i].Content);
+					hotComments.set("targetNews",results[i].targetNews);
+					hotComments.save(null,{
+						success: function(hotComments){
+							console.log("updateHotComments success");
+						},
+						error: function(hotComments,error){
+							console.log("updateHotComments error");
+						}
+					});
+				}
+			}
+		},
+		error: function(error){
+			console.log('error updateHotComments');
+		}
+	});
+});
