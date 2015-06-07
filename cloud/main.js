@@ -120,7 +120,7 @@ AV.Cloud.define("updateHotComments", function(request, response){
                             continue;
                         console.log(results[i]);
                         var hotComments = new HotComments();
-                        hotComments.set("Comments", results[i].attributes.Comments);//Comments pointer
+                        hotComments.set("Comments", results[i].id);//Comments pointer
                         hotComments.set("TargetConv",results[i].attributes.TargetConv);//TargetConv: string
                         hotComments.save(null,{
                             success: function(hotComments){
