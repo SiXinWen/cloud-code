@@ -109,11 +109,11 @@ AV.Cloud.define("updateHotComments", function(request, response){
 		success: function(results){
 			for(var i = 0; i < results.length; i++)
 			{
+                
                 console.log(results[i]);
 				var HotComments = AV.Object.extend("HotComments");
                 var hotComments = new HotComments();
-                hotComments.set("Content",results[i].attributes.Content);
-                hotComments.set("targetNews",results[i].attributes.targetNews);
+                hotComments.set("Comments", results[i].attributes.Comments);
                 hotComments.save(null,{
                     success: function(hotComments){
                         console.log("updateHotComments success");

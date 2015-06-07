@@ -4,6 +4,9 @@ module.exports.saveComment = function(response, params){
     var comment = new Comments();
     comment.set("Content",content._lctext);
     comment.set("Attitude",content._lcattrs.attitude);
+    console.log("++++++");
+    console.log(params.convId);
+    comment.set("TargetConv", params.convId);
     comment.save(null, {
         success: function(comment) {
             params.parsedContent._lcattrs["commentId"] = comment.id;
