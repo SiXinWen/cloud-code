@@ -116,8 +116,16 @@ AV.Cloud.define("updateHotComments", function(request, response){
                         hotCommentId.push(hotResults[i].attributes.Comments);
                     }
                     for(var i = 0; i < results.length; i++){   
-                        if(results[i].attributes.Comments in hotCommentId)
-                            continue;
+						for(var j = 0; j < hotCommentId.length; j++)
+						{
+							if(result[i].attributes.Comments == hotCommentId[j])
+							{
+								ifin = true;
+								break;
+							}
+						}
+						if(ifin)
+							continue;
                         console.log(results[i]);
                         var hotComments = new HotComments();
                         hotComments.set("Comments", results[i].id);//Comments pointer
