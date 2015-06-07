@@ -107,43 +107,38 @@ AV.Cloud.define("updateHotComments", function(request, response){
 	var query = new AV.Query(Comments);
 	var duquery = new AV.Query(HotComments);//duplicate query	
 	duquery.find({
-		success: function(hotResults){
-			
-			query.greaterThan("heat",10);
-	query.find({
-		success: function(results){
-			var hotCommentId = [];
-			for(var i = 0; i < hotResults.length; i++)
-			{
-				hotCommentId.push(hotResults[i].attributes.Comments);
-			}
-			for(var i = 0; i < results.length; i++)
-			{   
-				if(results[i].attributes.Comments in hotCommentId)
-					continue;
-                console.log(results[i]);
-                var hotComments = new HotComments();
-                hotComments.set("Comments", results[i].attributes.Comments);//Comments pointer
-				hotComments.set("TargetConv",results[i].attributes.TargetConv);//TargetConv: string
-                hotComments.save(null,{
-                    success: function(hotComments){
-                        console.log("updateHotComments success");
-                    },
-                    error: function(hotComments,error){
-                        console.log(error);
+		success: function(hotResults){			
+            query.greaterThan("heat",10);
+            query.find({
+                success: function(results){
+                    var hotCommentId = [];
+                    for(var i = 0; i < hotResults.length; i++){
+                        hotCommentId.push(hotResults[i].attributes.Comments);
                     }
-                });
-			}
+                    for(var i = 0; i < results.length; i++){   
+                        if(results[i].attributes.Comments in hotCommentId)
+                            continue;
+                        console.log(results[i]);
+                        var hotComments = new HotComments();
+                        hotComments.set("Comments", results[i].attributes.Comments);//Comments pointer
+                        hotComments.set("TargetConv",results[i].attributes.TargetConv);//TargetConv: string
+                        hotComments.save(null,{
+                            success: function(hotComments){
+                                console.log("updateHotComments success");
+                            },
+                            error: function(hotComments,error){
+                                console.log(error);
+                            }
+                        });
+                    }
+                },
+                error: function(error){
+                    console.log('error updateHotComments');
+                }
+	       });	
 		},
 		error: function(error){
-			console.log('error updateHotComments');
-		}
-	});
-			
-			
-		},
-		error{
-			
+			console.log(error);
 		}
 	});
 	
