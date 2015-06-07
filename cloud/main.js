@@ -106,8 +106,10 @@ AV.Cloud.define("updateHotComments", function(request, response){
 	var HotComments = AV.Object.extend("HotComments");
 	var query = new AV.Query(Comments);
 	var duquery = new AV.Query(HotComments);//duplicate query	
+    console.log("2");
 	duquery.find({
 		success: function(hotResults){			
+            console.log(hotResults);
             query.greaterThan("heat",10);
             query.find({
                 success: function(results){
@@ -115,10 +117,13 @@ AV.Cloud.define("updateHotComments", function(request, response){
                     for(var i = 0; i < hotResults.length; i++){
                         hotCommentId.push(hotResults[i].attributes.Comments);
                     }
+                    console.log("3");
+                    console.log(hotCommentId);
                     for(var i = 0; i < results.length; i++){   
+                        var ifin = false;
 						for(var j = 0; j < hotCommentId.length; j++)
 						{
-							if(result[i].attributes.Comments == hotCommentId[j])
+							if(results[i].id == hotCommentId[j])
 							{
 								ifin = true;
 								break;
@@ -126,6 +131,7 @@ AV.Cloud.define("updateHotComments", function(request, response){
 						}
 						if(ifin)
 							continue;
+                        console.log("4");
                         console.log(results[i]);
                         var hotComments = new HotComments();
                         hotComments.set("Comments", results[i].id);//Comments pointer
