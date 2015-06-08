@@ -4,6 +4,7 @@ module.exports.saveComment = function(response, params){
     var comment = new Comments();
     comment.set("Content",content._lctext);
     comment.set("Attitude",content._lcattrs.attitude);
+    comment.set("user", params.fromPeer);
     console.log("++++++");
     console.log(params.convId);
     comment.set("TargetConv", params.convId);
