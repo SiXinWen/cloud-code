@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
+	<meta name="apple-itunes-app" content="app-id=com.yangjunrui.SiXinWen-iOS">
+	<!--, affiliate-data=myAffiliateData, app-argument=myURL"> -->
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 	<title>撕新闻</title>
 	<!-- Bootstrap -->
@@ -111,6 +113,9 @@
 			</div>
 			-->
 			<div id="discuss" style="overflow: auto;height:320px;border:2px solid;border-radius:10px;">
+				<div style="padding-left:10px">
+					<a href="#">实时评论</a>|<a href="#">热门评论</a>
+				</div>
 			<br/>	
 			</div>
 		<!--</div>
@@ -126,7 +131,9 @@
 						<%= AffirmativeView %>
 						<input id="Oppose" type="radio" name="side" value="no">
 						<%= OpposeView %>
+						<br />
 						<a id="send-btn" type="submit" class="btn btn-default pull-right" >开撕</a>
+						<br />
 					</div>
 				</form>
 				<br/>
